@@ -1,12 +1,11 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class doorMatChanger : MonoBehaviour
 {
     public Material doorMatOff;
-    public MeshRenderer doorMatOn = GetComponent<MeshRenderer>();
-    Color col = doorMatOn.material.color;
+    public Material doorMatOn;
     public GameObject door;
     public GameObject player;
     private float distance;
@@ -17,14 +16,22 @@ public class doorMatChanger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        door.GetComponent<Renderer>().material = doorMatOff;
     }
 
     // Update is called once per frame
     void Update()
     {
-        distance = Vector3.Distance(door.transform.position, player.transform.position);
+        /*distance = Vector3.Distance(door.transform.position, player.transform.position);
         col.a = distance/(opaDis-5);
-        doorMatOn.material.color = col;
+        doorMatOn.material.color = col;*/
+        if(!boxActivate.boxOn)
+        {
+            door.GetComponent<Renderer>().material = doorMatOn;
+        }
+        else
+        {
+            door.GetComponent<Renderer>().material = doorMatOff;
+        }
     }
-}*/
+}

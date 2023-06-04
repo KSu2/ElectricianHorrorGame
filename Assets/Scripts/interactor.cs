@@ -11,25 +11,22 @@ public class interactor : MonoBehaviour
     public Transform intSource;
     public float intRange;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if(!pauseMenu.isPaused)
         {
-            Ray r = new Ray(intSource.position, intSource.forward);
-            if (Physics.Raycast(r, out RaycastHit hitInfo, intRange))
+            if (Input.GetButtonDown("Fire1"))
             {
-                if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
+                Ray r = new Ray(intSource.position, intSource.forward);
+                if (Physics.Raycast(r, out RaycastHit hitInfo, intRange))
                 {
-                    interactObj.Interact();
+                    if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
+                    {
+                        interactObj.Interact();
+                    }
                 }
             }
-        }
+        } 
     }
 }

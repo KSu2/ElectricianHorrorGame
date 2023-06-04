@@ -6,7 +6,7 @@ public class boxActivate : MonoBehaviour, IInteractable
 {
     [SerializeField] private Material myMat;
 
-    bool boxOn;
+    public static bool boxOn;
     bool delay;
     public GameObject mainLight;
     public Material skyMat1;
@@ -44,7 +44,7 @@ public class boxActivate : MonoBehaviour, IInteractable
             RenderSettings.ambientIntensity = 0f;
             RenderSettings.fog = true;
             RenderSettings.skybox = skyMat2;
-            RenderSettings.reflectionIntensity = 0f;
+            RenderSettings.reflectionIntensity = 0.2f;
             StartCoroutine(DelayFunc());
         }
     }
