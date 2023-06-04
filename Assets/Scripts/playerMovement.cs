@@ -11,6 +11,8 @@ public class playerMovement : MonoBehaviour
     public float jumpHeight = 3f;
     public float doubleJumps = 1;
     public float coyoteTime = 1f;
+    //stamina value for the user initialized to 10
+    public float stamina = 10f;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -25,6 +27,7 @@ public class playerMovement : MonoBehaviour
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        float multiplier = 1f;
 
         if(isGrounded && velocity.y < 0)
         {
@@ -38,12 +41,31 @@ public class playerMovement : MonoBehaviour
             jumpTime -= Time.deltaTime;
         }
 
+        //check if shift is being pressed
+        if(Input.GetButton("Sprint"))
+        {
+            multiplier = 3f;
+            stamina -= 1f;
+            //DEBUG statement
+            Debug.Log("I am sprint");
+        } else
+        {
+            multiplier = 1f;
+            stamina += 1f;
+            //DEBUG
+            Debug.Log("I am not sprint");
+        }
+
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        controller.Move(move * speed * Time.deltaTime);
+        //DEBUG
+        Debug.Log("Current speed: " + speed);
+    
+        controller.Move(move * speed * multiplier * Time.deltaTime);
+        
 
         //first jump condition
         if(Input.GetButtonDown("Jump") && (jumpTime > 0f || isGrounded))
@@ -61,6 +83,9 @@ public class playerMovement : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
 
-        controller.Move(velocity * Time.deltaTime);
+        //move controller position
+        controller.Move(velocity * multiplier * Time.deltaTime);
+
+        
     }
 }
