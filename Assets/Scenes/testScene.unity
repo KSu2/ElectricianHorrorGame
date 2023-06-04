@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -104,7 +104,7 @@ NavMeshSettings:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_BuildSettings:
-    serializedVersion: 2
+    serializedVersion: 3
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
@@ -117,7 +117,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    buildHeightMesh: 0
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 241257071}
   - component: {fileID: 241257070}
   - component: {fileID: 241257069}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,9 +166,17 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241257067}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
@@ -231,7 +239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 372134447}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +277,7 @@ GameObject:
   - component: {fileID: 445688432}
   - component: {fileID: 445688431}
   - component: {fileID: 445688430}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Landing1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,9 +307,17 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445688428}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
@@ -367,7 +383,7 @@ GameObject:
   - component: {fileID: 692745873}
   - component: {fileID: 692745872}
   - component: {fileID: 692745871}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Slope1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,9 +398,17 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692745870}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
@@ -559,7 +583,7 @@ GameObject:
   - component: {fileID: 848281752}
   - component: {fileID: 848281751}
   - component: {fileID: 848281753}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: doorGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,12 +667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10cd731af5fd1344db985fb0d66322d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorMatOff: {fileID: 0}
-  doorMatOn: {fileID: 2100000, guid: d984e41384f595a4ea8f8346b1cbc9e0, type: 2}
-  door: {fileID: 848281748}
-  player: {fileID: 1068567091}
-  distance: 0
-  opaDis: 20
 --- !u!1 &962975169
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,7 +679,7 @@ GameObject:
   - component: {fileID: 962975173}
   - component: {fileID: 962975172}
   - component: {fileID: 962975171}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: doorFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -691,9 +709,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962975169}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &962975172
@@ -746,11 +772,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962975169}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1068567091 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6790174293875512302, guid: fdb18c1516fadb240ab0798617b83a7d, type: 3}
-  m_PrefabInstance: {fileID: 6790174293964708317}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1200213039
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,7 +784,7 @@ GameObject:
   - component: {fileID: 1200213043}
   - component: {fileID: 1200213042}
   - component: {fileID: 1200213041}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: doorFrame (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -793,9 +814,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200213039}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1200213042
@@ -892,7 +921,7 @@ GameObject:
   - component: {fileID: 1424190263}
   - component: {fileID: 1424190262}
   - component: {fileID: 1424190261}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Slope2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -922,9 +951,17 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424190259}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
@@ -987,7 +1024,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1476162811}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1032,7 +1069,7 @@ GameObject:
   - component: {fileID: 1955891048}
   - component: {fileID: 1955891047}
   - component: {fileID: 1955891046}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1047,9 +1084,17 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955891045}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
@@ -1130,7 +1175,7 @@ GameObject:
   - component: {fileID: 2098134310}
   - component: {fileID: 2098134309}
   - component: {fileID: 2098134308}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: doorFrame (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1160,9 +1205,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098134306}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2098134309
@@ -1220,6 +1273,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 241257068}
     m_Modifications:
     - target: {fileID: 2779470558135566200, guid: 75a3ddab062a77e48a501175c684557c, type: 3}
@@ -1274,13 +1328,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Console
       objectReference: {fileID: 0}
+    - target: {fileID: 2779470558135566205, guid: 75a3ddab062a77e48a501175c684557c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75a3ddab062a77e48a501175c684557c, type: 3}
 --- !u!1001 &6790174293964708317
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6790174293875512296, guid: fdb18c1516fadb240ab0798617b83a7d, type: 3}
@@ -1327,9 +1389,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6790174293875512299, guid: fdb18c1516fadb240ab0798617b83a7d, type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 6790174293875512302, guid: fdb18c1516fadb240ab0798617b83a7d, type: 3}
       propertyPath: m_Name
       value: firstPersonPlayer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdb18c1516fadb240ab0798617b83a7d, type: 3}
