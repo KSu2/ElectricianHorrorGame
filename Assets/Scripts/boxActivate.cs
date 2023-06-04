@@ -27,7 +27,7 @@ public class boxActivate : MonoBehaviour, IInteractable
             myMat.color = Color.green;
             boxOn = true;
             mainLight.SetActive(true);
-            RenderSettings.ambientIntensity = 0f;
+            RenderSettings.ambientIntensity = 1f;
             RenderSettings.fog = false;
             RenderSettings.skybox = skyMat1;
             StartCoroutine(DelayFunc());
