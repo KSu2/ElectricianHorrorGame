@@ -11,6 +11,7 @@ public class playerMovement : MonoBehaviour
     public float jumpHeight = 3f;
     public float doubleJumps = 1;
     public float coyoteTime = 1f;
+    public float sprintMult = 1.5f;
     //stamina value for the user initialized to 10
     public float stamina = 10f;
 
@@ -44,7 +45,7 @@ public class playerMovement : MonoBehaviour
         //check if shift is being pressed
         if(Input.GetButton("Sprint"))
         {
-            multiplier = 3f;
+            multiplier = sprintMult;
             stamina -= 1f;
             //DEBUG statement
             //Debug.Log("I am sprint");
