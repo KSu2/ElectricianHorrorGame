@@ -35,16 +35,22 @@ public class pauseMenu : MonoBehaviour
     public void PauseGame()
     {
         pauseMenuObj.SetActive(true);
-        Time.timeScale = 0f;
         isPaused = true;
         Cursor.lockState = CursorLockMode.None;
+        if(boxActivate.boxOn)
+        {
+            Time.timeScale = 0f;
+        }
     }
 
     public void ResumeGame()
     {
-        pauseMenuObj.SetActive(false);
-        Time.timeScale = 1f;
+        pauseMenuObj.SetActive(false);   
         isPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
+        if(boxActivate.boxOn)
+        {
+            Time.timeScale = 1f;
+        }
     }
 }
