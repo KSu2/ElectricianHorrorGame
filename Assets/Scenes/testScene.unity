@@ -1279,7 +1279,7 @@ PrefabInstance:
     - target: {fileID: 2779470558135566200, guid: 75a3ddab062a77e48a501175c684557c, type: 3}
       propertyPath: skyMat2
       value: 
-      objectReference: {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: cbc162f2670614c40af8748fa188c183, type: 2}
     - target: {fileID: 2779470558135566200, guid: 75a3ddab062a77e48a501175c684557c, type: 3}
       propertyPath: mainLight
       value: 
@@ -1349,6 +1349,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6790174293437660650, guid: fdb18c1516fadb240ab0798617b83a7d, type: 3}
+      propertyPath: m_Range
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790174293437660650, guid: fdb18c1516fadb240ab0798617b83a7d, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6790174293875512296, guid: fdb18c1516fadb240ab0798617b83a7d, type: 3}
       propertyPath: m_RootOrder
       value: 1
