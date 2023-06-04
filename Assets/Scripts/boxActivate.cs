@@ -30,6 +30,7 @@ public class boxActivate : MonoBehaviour, IInteractable
             RenderSettings.ambientIntensity = 1f;
             RenderSettings.fog = false;
             RenderSettings.skybox = skyMat1;
+            RenderSettings.reflectionIntensity = 1f;
             StartCoroutine(DelayFunc());
         }
 
@@ -43,6 +44,7 @@ public class boxActivate : MonoBehaviour, IInteractable
             RenderSettings.ambientIntensity = 0f;
             RenderSettings.fog = true;
             RenderSettings.skybox = skyMat2;
+            RenderSettings.reflectionIntensity = 0f;
             StartCoroutine(DelayFunc());
         }
     }
