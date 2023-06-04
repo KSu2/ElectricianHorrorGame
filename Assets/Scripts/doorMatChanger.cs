@@ -8,6 +8,7 @@ public class doorMatChanger : MonoBehaviour
     public Material doorMatOn;
     public GameObject door;
     public GameObject player;
+    public GameObject doorLight;
     private float distance;
     public float opaDis = 20;
     
@@ -17,6 +18,7 @@ public class doorMatChanger : MonoBehaviour
     void Start()
     {
         door.GetComponent<Renderer>().material = doorMatOff;
+        doorLight.SetActive(false);
     }
 
     // Update is called once per frame
@@ -28,10 +30,12 @@ public class doorMatChanger : MonoBehaviour
         if(!boxActivate.boxOn)
         {
             door.GetComponent<Renderer>().material = doorMatOn;
+            doorLight.SetActive(true);
         }
         else
         {
             door.GetComponent<Renderer>().material = doorMatOff;
+            doorLight.SetActive(false);
         }
     }
 }
