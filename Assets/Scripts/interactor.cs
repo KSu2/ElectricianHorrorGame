@@ -16,6 +16,8 @@ public class interactor : MonoBehaviour
     {
         if(!pauseMenu.isPaused)
         {
+            if(!inventoryMenu.invOpen)
+            {
             if (Input.GetButtonDown("Fire1"))
             {
                 Ray r = new Ray(intSource.position, intSource.forward);
@@ -26,6 +28,7 @@ public class interactor : MonoBehaviour
                         interactObj.Interact();
                     }
                 }
+            }
             }
         } 
     }

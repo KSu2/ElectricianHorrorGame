@@ -13,22 +13,25 @@ public class flashlight : MonoBehaviour
     {
         if(!pauseMenu.isPaused)
         {
-            if (Input.GetButtonDown("fKey"))
+            if(!inventoryMenu.invOpen)
             {
-                if (isOn == false && failSafe == false)
+                if (Input.GetButtonDown("fKey"))
                 {
-                    failSafe = true;
-                    lightSource.SetActive(true);
-                    isOn = true;
-                    StartCoroutine(FailSafe());
-                }
+                    if (isOn == false && failSafe == false)
+                    {
+                        failSafe = true;
+                        lightSource.SetActive(true);
+                        isOn = true;
+                        StartCoroutine(FailSafe());
+                    }
 
-                else if (isOn == true && failSafe == false)
-                {
-                    failSafe = true;
-                    lightSource.SetActive(false);
-                    isOn = false;
-                    StartCoroutine(FailSafe());
+                    else if (isOn == true && failSafe == false)
+                    {
+                        failSafe = true;
+                        lightSource.SetActive(false);
+                        isOn = false;
+                        StartCoroutine(FailSafe());
+                    }
                 }
             }
         }

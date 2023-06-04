@@ -20,6 +20,8 @@ public class mouseLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!inventoryMenu.invOpen)
+        {
         float mouseX = Input.GetAxis("Mouse X") * mouseSens * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSens * Time.deltaTime;
 
@@ -28,5 +30,6 @@ public class mouseLook : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
+        }
     }
 }
