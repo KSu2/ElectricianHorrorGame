@@ -16,7 +16,11 @@ public class boxActivate : MonoBehaviour, IInteractable
     {
         boxOn = true;
         myMat.color = Color.green;
-        RenderSettings.fogDensity = 0.07f;
+        RenderSettings.fogDensity = 0.05f;
+        RenderSettings.fogColor = Color.black;
+        RenderSettings.ambientSkyColor = Color.black;
+        RenderSettings.ambientGroundColor = Color.black;
+        RenderSettings.ambientEquatorColor = Color.black;
     }
 
     public void Interact() 
