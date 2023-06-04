@@ -11,6 +11,7 @@ public class flashlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //There's gotta be a better way to do this
         if(!pauseMenu.isPaused)
         {
             if(!inventoryMenu.invOpen)

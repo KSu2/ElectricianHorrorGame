@@ -20,6 +20,7 @@ public class mouseLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //There's gotta be a better way to do this
         if(!inventoryMenu.invOpen)
         {
             if(!pauseMenu.isPaused)
