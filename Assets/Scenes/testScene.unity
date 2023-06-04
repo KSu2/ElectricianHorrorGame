@@ -1277,6 +1277,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 241257068}
     m_Modifications:
     - target: {fileID: 2779470558135566200, guid: 75a3ddab062a77e48a501175c684557c, type: 3}
+      propertyPath: skyMat2
+      value: 
+      objectReference: {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 2779470558135566200, guid: 75a3ddab062a77e48a501175c684557c, type: 3}
       propertyPath: mainLight
       value: 
       objectReference: {fileID: 705507993}
