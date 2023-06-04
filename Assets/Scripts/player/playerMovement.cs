@@ -47,13 +47,13 @@ public class playerMovement : MonoBehaviour
             multiplier = 3f;
             stamina -= 1f;
             //DEBUG statement
-            Debug.Log("I am sprint");
+            //Debug.Log("I am sprint");
         } else
         {
             multiplier = 1f;
             stamina += 1f;
             //DEBUG
-            Debug.Log("I am not sprint");
+            //Debug.Log("I am not sprint");
         }
 
         float x = Input.GetAxis("Horizontal");
@@ -62,7 +62,7 @@ public class playerMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
 
         //DEBUG
-        Debug.Log("Current speed: " + speed);
+        //Debug.Log("Current speed: " + speed);
     
         controller.Move(move * speed * multiplier * Time.deltaTime);
         
