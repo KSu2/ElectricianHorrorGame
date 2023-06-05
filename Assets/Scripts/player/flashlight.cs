@@ -12,9 +12,7 @@ public class flashlight : MonoBehaviour
     void Update()
     {
         //There's gotta be a better way to do this
-        if(!pauseMenu.isPaused)
-        {
-            if(!inventoryMenu.invOpen)
+        if(!inventoryMenu.invOpen && !pauseMenu.isPaused)
             {
                 if (Input.GetButtonDown("fKey"))
                 {
@@ -35,7 +33,6 @@ public class flashlight : MonoBehaviour
                     }
                 }
             }
-        }
     }
     IEnumerator FailSafe()
         {
