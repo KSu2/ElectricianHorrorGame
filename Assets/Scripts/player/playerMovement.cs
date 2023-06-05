@@ -13,7 +13,11 @@ public class playerMovement : MonoBehaviour
     public float coyoteTime = 1f;
     public float sprintMult = 1.5f;
     //stamina value for the user initialized to 10
-    public float stamina = 10f;
+    public float maxStam = 5f;
+    float stamina;
+    float multiplier = 1f;
+    bool sprintDelay;
+    public float sprintDelayTime = 4f;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -24,11 +28,15 @@ public class playerMovement : MonoBehaviour
     float doubleJump = 0;
     float jumpTime = 0f;
 
-    // Update is called once per frame
+    void Start()
+    {
+        stamina = maxStam;
+    }
+    
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        float multiplier = 1f;
+        
 
         if(isGrounded && velocity.y < 0)
         {
@@ -43,16 +51,26 @@ public class playerMovement : MonoBehaviour
         }
 
         //check if shift is being pressed
-        if(Input.GetButton("Sprint"))
+        if(Input.GetButton("Sprint") && sprintDelay == false)
         {
-            multiplier = sprintMult;
-            stamina -= 1f;
-            //DEBUG statement
-            //Debug.Log("I am sprint");
-        } else
+            if(stamina > 0)
+            {
+                multiplier = sprintMult;
+                stamina -= Time.deltaTime;
+                //DEBUG statement
+                //Debug.Log("I am sprint");
+            }
+            else if(stamina <= 0)
+            {
+                sprintDelay = true;
+                StartCoroutine(DelayFunc());
+            }
+        } 
+        
+        else if (stamina <= maxStam)
         {
             multiplier = 1f;
-            stamina += 1f;
+            stamina += Time.deltaTime;
             //DEBUG
             //Debug.Log("I am not sprint");
         }
@@ -85,8 +103,12 @@ public class playerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         //move controller position
-        controller.Move(velocity * multiplier * Time.deltaTime);
-
-        
+        controller.Move(velocity * multiplier * Time.deltaTime);     
     }
+
+    IEnumerator DelayFunc()
+        {
+            yield return new WaitForSeconds(sprintDelayTime);
+            sprintDelay = false;
+        }
 }
