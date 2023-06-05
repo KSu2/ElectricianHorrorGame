@@ -2196,7 +2196,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3024816822982397069, guid: 16f55baa9a52e9d4caa7c4e5702fc121, type: 3}
       propertyPath: opaDis
-      value: 40
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3024816822982397069, guid: 16f55baa9a52e9d4caa7c4e5702fc121, type: 3}
       propertyPath: player

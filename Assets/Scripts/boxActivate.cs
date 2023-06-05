@@ -49,10 +49,11 @@ public class boxActivate : MonoBehaviour, IInteractable
             RenderSettings.ambientIntensity = 0f;
             RenderSettings.fog = true;
             RenderSettings.skybox = skyMat2;
-            RenderSettings.reflectionIntensity = 0.2f;
+            RenderSettings.reflectionIntensity = 0.05f;
             StartCoroutine(DelayFunc());
         }
     }
+    
     IEnumerator DelayFunc()
         {
             yield return new WaitForSeconds(0.5f);
