@@ -16,6 +16,7 @@ public class pauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //pause menu won't open if inventory is open
         if(!inventoryMenu.invOpen)
         {
             if(Input.GetKeyDown(KeyCode.Escape))
