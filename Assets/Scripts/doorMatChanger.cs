@@ -27,7 +27,7 @@ public class doorMatChanger : MonoBehaviour
     void Update()
     {
         distance = Vector3.Distance(door.transform.position, player.transform.position);
-        Debug.Log("Distance: " + distance);
+        // Debug.Log("Distance: " + distance);
         Color color = doorMatOn.color;
         color.a = ((distance + 4f)/ opaDis);
 
