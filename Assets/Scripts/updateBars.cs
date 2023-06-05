@@ -5,16 +5,17 @@ using UnityEngine.UI;
 
 public class updateBars : MonoBehaviour
 { 
-    public GameObject stamBar;
-    public GameObject healthBar;
+    public Slider stamBar;
+    public Slider healthBar;
 
-    public void updateStam(int val)
+    public void updateStam(float val)
     {
-        stamBar.GetComponent<Slider>().value = val;
+        
+        stamBar.value = val * 10;
     }
 
-    public void updateHealth(int val)
+    public void updateHealth(float val)
     {
-        healthBar.GetComponent<Slider>().value = val;
+        healthBar.value = val;
     }
 }

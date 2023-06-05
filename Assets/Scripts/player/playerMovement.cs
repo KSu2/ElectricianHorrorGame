@@ -28,6 +28,9 @@ public class playerMovement : MonoBehaviour
     float doubleJump = 0;
     float jumpTime = 0f;
 
+    //reference to script which updates stam and health bars
+    public updateBars up;
+
     void Start()
     {
         stamina = maxStam;
@@ -103,7 +106,8 @@ public class playerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         //move controller position
-        controller.Move(velocity * multiplier * Time.deltaTime);     
+        controller.Move(velocity * multiplier * Time.deltaTime);
+        up.updateStam(stamina/maxStam);
     }
 
     IEnumerator DelayFunc()
