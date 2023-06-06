@@ -6,6 +6,7 @@ public class noteRead : MonoBehaviour, IInteractable
 {
     public GameObject note;
     public GameObject noteWriting;
+    public GameObject noteList;
     public GameObject player;
     public bool noteOpen;
     private float distance;
@@ -15,7 +16,6 @@ public class noteRead : MonoBehaviour, IInteractable
     void Start()
     {
         noteWriting.SetActive(false);
-        Debug.Log("wakeup");
     }
 
     void Update()
@@ -38,18 +38,19 @@ public class noteRead : MonoBehaviour, IInteractable
         {
             CloseNote();
         }
-        Debug.Log(noteOpen);
     }
 
     public void OpenNote()
     {
         noteWriting.SetActive(true);
         noteOpen = true;
+        menuCheck.inMenu = true;
     }
 
     public void CloseNote()
     {
         noteWriting.SetActive(false);
         noteOpen = false;
+        menuCheck.inMenu = false;
     }
 }

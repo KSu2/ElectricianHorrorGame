@@ -34,19 +34,19 @@ public class inventoryMenu : MonoBehaviour
     {
         if (!pauseMenu.isPaused)
         {
-
-        }
-        if (Input.GetButtonDown("Inv"))
-        {
-            if (invOpen)
+            if (Input.GetButtonDown("Inv"))
             {
-                CloseInv();
-            }
-            else
-            {
-                OpenInv();
+                if (invOpen)
+                {
+                    CloseInv();
+                }
+                else
+                {
+                    OpenInv();
+                }
             }
         }
+        
     }
 
     public void OpenInv()
