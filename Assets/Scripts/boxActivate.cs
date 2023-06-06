@@ -8,19 +8,11 @@ public class boxActivate : MonoBehaviour, IInteractable
 
     public static bool boxOn;
     bool delay;
-    public GameObject mainLight;
-    public Material skyMat1;
-    public Material skyMat2;
 
     private void Start()
     {
         boxOn = true;
         myMat.color = Color.green;
-        RenderSettings.fogDensity = 0.05f;
-        RenderSettings.fogColor = Color.black;
-        RenderSettings.ambientSkyColor = Color.black;
-        RenderSettings.ambientGroundColor = Color.black;
-        RenderSettings.ambientEquatorColor = Color.black;
     }
 
     public void Interact() 
@@ -31,11 +23,6 @@ public class boxActivate : MonoBehaviour, IInteractable
             delay = true;
             myMat.color = Color.green;
             boxOn = true;
-            mainLight.SetActive(true);
-            RenderSettings.ambientIntensity = 1f;
-            RenderSettings.fog = false;
-            RenderSettings.skybox = skyMat1;
-            RenderSettings.reflectionIntensity = 1f;
             StartCoroutine(DelayFunc());
         }
 
@@ -45,14 +32,10 @@ public class boxActivate : MonoBehaviour, IInteractable
             delay = true;
             myMat.color = Color.red;
             boxOn = false;
-            mainLight.SetActive(false);
-            RenderSettings.ambientIntensity = 0f;
-            RenderSettings.fog = true;
-            RenderSettings.skybox = skyMat2;
-            RenderSettings.reflectionIntensity = 0.2f;
             StartCoroutine(DelayFunc());
         }
     }
+    
     IEnumerator DelayFunc()
         {
             yield return new WaitForSeconds(0.5f);
