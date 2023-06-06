@@ -32,6 +32,14 @@ public class noteRead : MonoBehaviour, IInteractable
     {
         if(!noteOpen)
         {
+            for(int i = 0; i< noteList.transform.childCount; i++)
+            {
+                var child = noteList.transform.GetChild(i).gameObject;
+                if (child != null)
+                {
+                    child.SetActive(false);
+                }
+            }
             OpenNote(); 
         }
         else
