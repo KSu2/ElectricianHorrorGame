@@ -34,6 +34,11 @@ public class inventoryMenu : MonoBehaviour
     {
         if (!pauseMenu.isPaused)
         {
+            if(Input.GetKeyDown(KeyCode.Escape) && invOpen)
+            {
+                CloseInv();
+            }
+
             if (Input.GetButtonDown("Inv"))
             {
                 if (invOpen)
