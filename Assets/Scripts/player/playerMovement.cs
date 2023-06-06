@@ -111,7 +111,7 @@ public class playerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         //move controller position
-        controller.Move(velocity * multiplier * Time.deltaTime);
+        controller.Move(velocity * Time.deltaTime);
         up.updateStam(stamina/maxStam);
     }
 

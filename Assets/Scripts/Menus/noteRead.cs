@@ -6,8 +6,9 @@ public class noteRead : MonoBehaviour, IInteractable
 {
     public GameObject note;
     public GameObject noteWriting;
+    public GameObject noteList;
     public GameObject player;
-    public bool noteOpen;
+    public static bool noteOpen;
     private float distance;
     public float maxDis = 8f;
 
@@ -15,14 +16,13 @@ public class noteRead : MonoBehaviour, IInteractable
     void Start()
     {
         noteWriting.SetActive(false);
-        Debug.Log("wakeup");
     }
 
     void Update()
     {
         //add an area trigger so this isn't firing all the time
         distance = Vector3.Distance(note.transform.position, player.transform.position);
-        if(distance > maxDis)
+        if(distance > maxDis || Input.GetKeyDown(KeyCode.Escape))
         {
             CloseNote();
         }
@@ -32,13 +32,20 @@ public class noteRead : MonoBehaviour, IInteractable
     {
         if(!noteOpen)
         {
+            for(int i = 0; i< noteList.transform.childCount; i++)
+            {
+                var child = noteList.transform.GetChild(i).gameObject;
+                if (child != null)
+                {
+                    child.SetActive(false);
+                }
+            }
             OpenNote(); 
         }
         else
         {
             CloseNote();
         }
-        Debug.Log(noteOpen);
     }
 
     public void OpenNote()

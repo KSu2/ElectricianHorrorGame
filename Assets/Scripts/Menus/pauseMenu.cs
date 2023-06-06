@@ -17,7 +17,7 @@ public class pauseMenu : MonoBehaviour
     void Update()
     {
         //pause menu won't open if inventory is open
-        if(!inventoryMenu.invOpen)
+        if(!inventoryMenu.invOpen && !noteRead.noteOpen)
         {
             if(Input.GetKeyDown(KeyCode.Escape))
         {
