@@ -31,6 +31,12 @@ public class playerMovement : MonoBehaviour
     //reference to script which updates stam and health bars
     public updateBars up;
 
+    //use the item that is currently equipped
+    public void useItem(int type)
+    {
+
+    }
+
     void Start()
     {
         stamina = maxStam;
@@ -40,7 +46,6 @@ public class playerMovement : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         
-
         if(isGrounded && velocity.y < 0)
         {
             velocity.y = -4f;

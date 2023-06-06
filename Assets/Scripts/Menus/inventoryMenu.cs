@@ -6,6 +6,9 @@ using TMPro;
 public class inventoryMenu : MonoBehaviour
 {
     public GameObject invMenuObj;
+
+    public Material HealthMat;
+
     [SerializeField] public GameObject slot1;
     [SerializeField] public GameObject slot2;
     [SerializeField] public GameObject slot3;
@@ -100,14 +103,26 @@ public class inventoryMenu : MonoBehaviour
     public void equipItem(int slot)
     {
         Debug.Log("slot: " + slot);
-        if (!isOpen[slot])
+        if (!isOpen[slot] && !holdable.activeInHierarchy)
         {
             holdable.SetActive(true);
             invCount--;
+            isOpen[slot] = true;
+            //set the text of the corresponding slot to "Empty"
+            string type = slots[slot].GetComponent<TextMeshProUGUI>().text;
+            slots[slot].GetComponent<TextMeshProUGUI>().text = "Empty";
+            //set the holdable Type of the GameObject
+            if(type == "health")
+            {
+                holdable.GetComponent<ItemActivate>().select= ItemActivate.Type.health;
+                holdable.GetComponent<Renderer>().material = HealthMat;
+            }
         }
-        isOpen[slot] = true;
-        //set the text of the corresponding slot to "Empty"
-        slots[slot].GetComponent<TextMeshProUGUI>().text = "Empty";
+        else
+        {
+            Debug.Log("item already equipped or slot is empty");
+        }
+       
 
 
         //show item on player model
