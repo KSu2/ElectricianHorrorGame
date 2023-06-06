@@ -12,13 +12,21 @@ public class inventoryMenu : MonoBehaviour
 
     //index representing the next inventory position
     public int invCount = 0;
+    public bool[] isOpen;
+    public GameObject[] slots;
 
     public static bool invOpen;
+
+    public GameObject holdable;
+
 
     // Start is called before the first frame update
     void Start()
     {
         invMenuObj.SetActive(false);
+        holdable.SetActive(false);
+        isOpen = new bool[] { true, true, true };
+        slots = new GameObject[] { slot1, slot2, slot3 };
     }
 
     // Update is called once per frame
@@ -55,33 +63,57 @@ public class inventoryMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public void updateText(string text)
+    public bool updateText(string text)
     {
+        int next = nextAvail();
         if(invCount > 2)
         {
             //eventually change this to a message that pops on screen
             Debug.Log("Inventory Full");
-        }
-        else if (invCount == 0)
-        {
-            Debug.Log("text: " + slot1.GetComponent<TextMeshProUGUI>().text);
-            slot1.GetComponent<TextMeshProUGUI>().text = text;
-            invCount++;
-        }
-        else if (invCount == 1)
-        {
-            slot2.GetComponent<TextMeshProUGUI>().text = text;
-            invCount++;
-        }
-        else if (invCount == 2)
-        {
-            slot3.GetComponent<TextMeshProUGUI>().text = text;
-            invCount++;
+            return false;
         }
         else
         {
-            Debug.Log("ERROR: trying to access an inv slot number that doesn't exist");
+            slots[next].GetComponent<TextMeshProUGUI>().text = text;
+            isOpen[next] = false;
+            invCount++;
+            return true;
         }
+    }
 
+    //helper function to get the index of the next available inventory slot
+    public int nextAvail()
+    {
+        for(int x = 0; x < 3; x++)
+        {
+            if (isOpen[x])
+            {
+                return x;
+            }
+        }
+        return -1;
+    }
+
+    //remove item at the specified slot #
+    //decrement the invCount
+    //change player model
+    public void equipItem(int slot)
+    {
+        Debug.Log("slot: " + slot);
+        if (!isOpen[slot])
+        {
+            holdable.SetActive(true);
+            invCount--;
+        }
+        isOpen[slot] = true;
+        //set the text of the corresponding slot to "Empty"
+        slots[slot].GetComponent<TextMeshProUGUI>().text = "Empty";
+
+
+        //show item on player model
+        //Don't know how to do this
+        //maybe spawn item at position which is visible to player hands
+        //need to add the object instace to the player model
+        
     }
 }
