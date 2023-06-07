@@ -5,7 +5,6 @@ using TMPro;
 
 public class ItemActivate : MonoBehaviour, IInteractable
 {
-    public int hi;
     //determine the item type
     public enum Type { None = 0, health };
     public Type select;

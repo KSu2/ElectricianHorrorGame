@@ -70,8 +70,9 @@ public class interactor : MonoBehaviour
 
         //change this to simply moving the item to the position and setting it to active
         //this will make it so we don't have to duplicate item GameObjects in the scene which may slow down the performance
-        Vector3 pos = new Vector3(gameObject.transform.position.x + 5, 0, gameObject.transform.position.z);
-        GameObject clone = Instantiate(holdable, pos, Quaternion.identity);
+        Vector3 pos = new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z + 5);
+        
+        GameObject clone = Instantiate(holdable, gameObject.transform.position + gameObject.transform.forward * 5, Quaternion.identity);
     }
 
 }

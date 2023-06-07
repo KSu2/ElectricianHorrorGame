@@ -116,8 +116,8 @@ public class playerMovement : MonoBehaviour
     }
 
     IEnumerator DelayFunc()
-        {
+    {
             yield return new WaitForSeconds(sprintDelayTime);
             sprintDelay = false;
-        }
+    }
 }

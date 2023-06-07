@@ -6,6 +6,7 @@ using TMPro;
 public class inventoryMenu : MonoBehaviour
 {
     public GameObject invMenuObj;
+    public GameObject invFullObj;
 
     public Material HealthMat;
 
@@ -21,7 +22,6 @@ public class inventoryMenu : MonoBehaviour
     public static bool invOpen;
 
     public GameObject holdable;
-
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +42,7 @@ public class inventoryMenu : MonoBehaviour
                 CloseInv();
             }
 
-            if (Input.GetButtonDown("Inv"))
+            else if (Input.GetButtonDown("Inv"))
             {
                 if (invOpen)
                 {
@@ -78,6 +78,7 @@ public class inventoryMenu : MonoBehaviour
         {
             //eventually change this to a message that pops on screen
             Debug.Log("Inventory Full");
+            invFullObj.SetActive(true);
             return false;
         }
         else
@@ -128,8 +129,6 @@ public class inventoryMenu : MonoBehaviour
             Debug.Log("item already equipped or slot is empty");
         }
        
-
-
         //show item on player model
         //Don't know how to do this
         //maybe spawn item at position which is visible to player hands
