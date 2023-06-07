@@ -6,7 +6,7 @@ using TMPro;
 public class ItemActivate : MonoBehaviour, IInteractable
 {
     //determine the item type
-    public enum Type { None = 0, Medkit, Type2, Type3, Type4 };
+    public enum Type { None = 0, Medkit, Lantern, Type3, Type4 };
     public Type select;
 
     public GameObject player;
@@ -28,7 +28,7 @@ public class ItemActivate : MonoBehaviour, IInteractable
             Debug.Log("selected health item");
             gameObject.SetActive(false);
         }
-        else if (select == Type.Type2 && inv.updateText("Type2"))
+        else if (select == Type.Lantern && inv.updateText("Lantern"))
         {
             Debug.Log("selected Type 2");
             gameObject.SetActive(false);

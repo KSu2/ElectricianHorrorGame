@@ -124,13 +124,13 @@ public class inventoryMenu : MonoBehaviour
                 holdable.GetComponent<ItemActivate>().select= ItemActivate.Type.Medkit;
                 holdable.GetComponent<Renderer>().material = HealthMat;
             } 
-            else if(type == "Type2")
+            else if(type == "Lantern")
             {
-                holdable.GetComponent<ItemActivate>().select = ItemActivate.Type.Type2;
+                holdable.GetComponent<ItemActivate>().select = ItemActivate.Type.Lantern;
                 holdable.GetComponent<Renderer>().material = brightMat;
                 
                 //set appearance of item
-                //holdable.GetComponent<Renderer>().material = Type2Mat;
+                //holdable.GetComponent<Renderer>().material = LanternMat;
             }
             else if(type == "Type3")
             {

@@ -11,11 +11,17 @@ public class interactor : MonoBehaviour
     public Transform intSource;
     public float intRange;
     public GameObject holdable;
+    public GameObject holdableLight;
     public GameObject player;
+    public Material brightMat;
+    public Material darkMat;
+    bool holdableLanternOn;
 
     void Start()
     {
         player = GameObject.Find("firstPersonPlayer");
+        holdableLight.SetActive(true);
+        holdableLanternOn = true;
     }
 
     // Update is called once per frame
@@ -74,10 +80,22 @@ public class interactor : MonoBehaviour
                 holdable.SetActive(false);
             }   
         }
-        else if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Type2)
+        else if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Lantern)
         {
-            
-            Debug.Log("we have used a Type2 item");
+            Debug.Log("we have used a Lantern item");
+            //Lantern functionality
+            if(holdableLanternOn)
+            {
+                holdableLight.SetActive(false);
+                holdableLanternOn = false;
+                holdable.GetComponent<Renderer>().material = darkMat;
+            }
+            else
+            {
+                holdableLight.SetActive(true);
+                holdableLanternOn = true;
+                holdable.GetComponent<Renderer>().material = brightMat;
+            }
         }
         else if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Type3)
         {
