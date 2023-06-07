@@ -119,9 +119,9 @@ public class inventoryMenu : MonoBehaviour
             string type = slots[slot].GetComponent<TextMeshProUGUI>().text;
             slots[slot].GetComponent<TextMeshProUGUI>().text = "Empty";
             //set the holdable Type of the GameObject
-            if(type == "health")
+            if(type == "Medkit")
             {
-                holdable.GetComponent<ItemActivate>().select= ItemActivate.Type.health;
+                holdable.GetComponent<ItemActivate>().select= ItemActivate.Type.Medkit;
                 holdable.GetComponent<Renderer>().material = HealthMat;
             } 
             else if(type == "Type2")

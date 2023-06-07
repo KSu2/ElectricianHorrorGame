@@ -62,7 +62,7 @@ public class interactor : MonoBehaviour
     public void useItem()
     {
         //check what type of item is currently equipped
-        if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.health)
+        if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Medkit)
         {
             Debug.Log("we have used a health item");
             //Health item functionality

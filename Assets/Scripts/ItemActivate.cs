@@ -6,7 +6,7 @@ using TMPro;
 public class ItemActivate : MonoBehaviour, IInteractable
 {
     //determine the item type
-    public enum Type { None = 0, health, Type2, Type3, Type4 };
+    public enum Type { None = 0, Medkit, Type2, Type3, Type4 };
     public Type select;
 
     public GameObject player;
@@ -23,7 +23,7 @@ public class ItemActivate : MonoBehaviour, IInteractable
         //the inventory slots should fill up sequentially, so first 1 then 2 then 3
         //first check if the inventory is full
 
-        if (select == Type.health && inv.updateText("health"))
+        if (select == Type.Medkit && inv.updateText("Medkit"))
         {
             Debug.Log("selected health item");
             gameObject.SetActive(false);
@@ -35,7 +35,7 @@ public class ItemActivate : MonoBehaviour, IInteractable
         } 
         else if (select == Type.Type3 && inv.updateText("Type3"))
         {
-            Debug.Log("selected Type 2");
+            Debug.Log("selected Type 3");
             gameObject.SetActive(false);
         }
     }
