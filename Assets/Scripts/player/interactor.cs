@@ -12,10 +12,12 @@ public class interactor : MonoBehaviour
     public float intRange;
     public GameObject holdable;
     public GameObject player;
+    public inventoryMenu inv;
 
     void Start()
     {
         player = GameObject.Find("firstPersonPlayer");
+        inv = player.GetComponent<inventoryMenu>();
     }
 
     // Update is called once per frame
@@ -43,6 +45,12 @@ public class interactor : MonoBehaviour
                     Debug.Log("right click!");
                     dropItem();
                     holdable.SetActive(false);
+                }
+                //middle click re-equip the item
+                else if (Input.GetButtonDown("Fire3"))
+                {
+                    Debug.Log("middle click!");
+                    inv.unequipItem();
                 }
             }
             //if left click is pushed but we are not holding an item

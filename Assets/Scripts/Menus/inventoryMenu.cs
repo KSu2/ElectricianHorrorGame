@@ -71,7 +71,8 @@ public class inventoryMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public bool updateText(string text)
+    //before updateText is called nextAvail should check if there is space first
+    public bool updateText(ItemActivate.Type type)
     {
         int next = nextAvail();
         if(invCount > 2)
@@ -82,8 +83,8 @@ public class inventoryMenu : MonoBehaviour
             return false;
         }
         else
-        {
-            slots[next].GetComponent<TextMeshProUGUI>().text = text;
+        {         
+            slots[next].GetComponent<TextMeshProUGUI>().text = type.ToString();
             isOpen[next] = false;
             invCount++;
             return true;
@@ -91,6 +92,7 @@ public class inventoryMenu : MonoBehaviour
     }
 
     //helper function to get the index of the next available inventory slot
+    //if -1 is returned then it means that there is no space in the inventory
     public int nextAvail()
     {
         for(int x = 0; x < 3; x++)
@@ -147,6 +149,19 @@ public class inventoryMenu : MonoBehaviour
         //Don't know how to do this
         //maybe spawn item at position which is visible to player hands
         //need to add the object instace to the player model
-        
+    }
+
+    public void unequipItem()
+    {
+        int next = nextAvail();
+        if(next != -1 && holdable.activeInHierarchy)
+        {
+            holdable.SetActive(false);
+            updateText(holdable.GetComponent<ItemActivate>().select);
+        }
+        else
+        {
+            Debug.Log("can't unequip item now");
+        }
     }
 }

@@ -22,21 +22,7 @@ public class ItemActivate : MonoBehaviour, IInteractable
     {
         //the inventory slots should fill up sequentially, so first 1 then 2 then 3
         //first check if the inventory is full
-
-        if (select == Type.health && inv.updateText("health"))
-        {
-            Debug.Log("selected health item");
-            gameObject.SetActive(false);
-        }
-        else if (select == Type.Type2 && inv.updateText("Type2"))
-        {
-            Debug.Log("selected Type 2");
-            gameObject.SetActive(false);
-        } 
-        else if (select == Type.Type3 && inv.updateText("Type3"))
-        {
-            Debug.Log("selected Type 2");
-            gameObject.SetActive(false);
-        }
+        inv.updateText(select);
+        gameObject.SetActive(false);
     }
 }
