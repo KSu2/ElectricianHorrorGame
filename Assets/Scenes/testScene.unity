@@ -378,7 +378,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe2edee36d59fa488546690bb7e41cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hi: 0
   select: 1
   inv: {fileID: 1847700036}
 --- !u!1 &175721420
@@ -392,6 +391,7 @@ GameObject:
   - component: {fileID: 175721421}
   - component: {fileID: 175721423}
   - component: {fileID: 175721422}
+  - component: {fileID: 175721424}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -516,6 +516,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175721420}
   m_CullTransparentMesh: 1
+--- !u!114 &175721424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175721420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 845d8796c61a1cc429385d7a6b4bb402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textDisplay: {fileID: 175721422}
+  textContainer: {fileID: 1028487873}
 --- !u!1 &193398074
 GameObject:
   m_ObjectHideFlags: 0
@@ -2134,7 +2148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe2edee36d59fa488546690bb7e41cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hi: 0
   select: 0
   inv: {fileID: 1847700036}
 --- !u!224 &1836499149 stripped
@@ -2174,7 +2187,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invMenuObj: {fileID: 1950506052}
   invFullObj: {fileID: 1028487873}
-  textDisplay: {fileID: 175721422}
   HealthMat: {fileID: 2100000, guid: 6cafa049904ade54391abc20eb6adcdf, type: 2}
   slot1: {fileID: 668819155}
   slot2: {fileID: 669529731}

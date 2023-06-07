@@ -16,6 +16,6 @@ public class updateBars : MonoBehaviour
 
     public void updateHealth(float val)
     {
-        healthBar.value = val;
+        healthBar.value = val*10;
     }
 }
