@@ -2637,6 +2637,53 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1612589348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 6269267101357608172, guid: ab3891c2461383e4487b0b9096026bcd, type: 3}
+  m_PrefabInstance: {fileID: 886324785}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1612589350}
+  - component: {fileID: 1612589349}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1612589349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1713036682827890669, guid: ab3891c2461383e4487b0b9096026bcd, type: 3}
+  m_PrefabInstance: {fileID: 886324785}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612589348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5001f29dfb82ba4daa921615ab6aa35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainLight: {fileID: 705507993}
+  skyMat1: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  skyMat2: {fileID: 0}
+--- !u!4 &1612589350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 8761483949112337427, guid: ab3891c2461383e4487b0b9096026bcd, type: 3}
+  m_PrefabInstance: {fileID: 886324785}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612589348}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.893564, y: 5.108182, z: -6.374254}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1616996332
 GameObject:
   m_ObjectHideFlags: 0
@@ -2798,6 +2845,7 @@ MonoBehaviour:
   invFullObj: {fileID: 1028487873}
   HealthMat: {fileID: 2100000, guid: 6cafa049904ade54391abc20eb6adcdf, type: 2}
   brightMat: {fileID: 2100000, guid: 01203844ab8fb764e93309a8ab6aa889, type: 2}
+  holdableLight: {fileID: 1569628464}
   slot1: {fileID: 668819155}
   slot2: {fileID: 669529731}
   slot3: {fileID: 224537983}
@@ -3657,6 +3705,10 @@ PrefabInstance:
       propertyPath: intRange
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6790174293845636267, guid: fdb18c1516fadb240ab0798617b83a7d, type: 3}
+      propertyPath: holdableLight
+      value: 
+      objectReference: {fileID: 1569628464}
     - target: {fileID: 6790174293875512296, guid: fdb18c1516fadb240ab0798617b83a7d, type: 3}
       propertyPath: m_RootOrder
       value: 1

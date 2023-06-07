@@ -16,20 +16,16 @@ public class interactor : MonoBehaviour
     public inventoryMenu inv;
     public Material brightMat;
     public Material darkMat;
-    bool holdableLanternOn;
 
     void Start()
     {
         player = GameObject.Find("firstPersonPlayer");
         inv = player.GetComponent<inventoryMenu>();
-        holdableLight.SetActive(true);
-        holdableLanternOn = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //There's gotta be a better way to do this
         //check if the inventory menu and the pause menu is not open
         if(!inventoryMenu.invOpen && !pauseMenu.isPaused)
         {
@@ -49,6 +45,7 @@ public class interactor : MonoBehaviour
                 {
                     Debug.Log("right click!");
                     dropItem();
+                    holdableLight.SetActive(false);
                     holdable.SetActive(false);
                 }
                 //middle click re-equip the item
@@ -92,18 +89,6 @@ public class interactor : MonoBehaviour
         {
             Debug.Log("we have used a Lantern item");
             //Lantern functionality
-            if(holdableLanternOn)
-            {
-                holdableLight.SetActive(false);
-                holdableLanternOn = false;
-                holdable.GetComponent<Renderer>().material = darkMat;
-            }
-            else
-            {
-                holdableLight.SetActive(true);
-                holdableLanternOn = true;
-                holdable.GetComponent<Renderer>().material = brightMat;
-            }
         }
         else if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Type3)
         {

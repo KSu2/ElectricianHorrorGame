@@ -12,7 +12,9 @@ public class inventoryMenu : MonoBehaviour
     
 
     public Material HealthMat;
+
     public Material brightMat;
+    public GameObject holdableLight;
 
     [SerializeField] public GameObject slot1;
     [SerializeField] public GameObject slot2;
@@ -34,6 +36,7 @@ public class inventoryMenu : MonoBehaviour
         holdable.SetActive(false);
         isOpen = new bool[] { true, true, true };
         slots = new GameObject[] { slot1, slot2, slot3 };
+        holdableLight.SetActive(false);
     }
 
     // Update is called once per frame
@@ -136,6 +139,7 @@ public class inventoryMenu : MonoBehaviour
             {
                 holdable.GetComponent<ItemActivate>().select = ItemActivate.Type.Lantern;
                 holdable.GetComponent<Renderer>().material = brightMat;
+                holdableLight.SetActive(true);
                 
                 //set appearance of item
                 //holdable.GetComponent<Renderer>().material = LanternMat;
