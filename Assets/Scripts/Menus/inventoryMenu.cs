@@ -8,6 +8,9 @@ public class inventoryMenu : MonoBehaviour
     public GameObject invMenuObj;
     public GameObject invFullObj;
 
+    public TextMeshProUGUI invFullMsg;
+    
+
     public Material HealthMat;
     public Material brightMat;
 
@@ -80,7 +83,10 @@ public class inventoryMenu : MonoBehaviour
         {
             //eventually change this to a message that pops on screen
             Debug.Log("Inventory Full");
+            //invFullObj.SetActive(true);
             invFullObj.SetActive(true);
+            showErrMsg(invFullMsg);
+            
             return false;
         }
         else
@@ -165,5 +171,29 @@ public class inventoryMenu : MonoBehaviour
         {
             Debug.Log("can't unequip item now");
         }
+    }
+
+    public void showErrMsg(TextMeshProUGUI txt)
+    {
+        StartCoroutine(fade(txt));
+    }
+
+    private IEnumerator fade(TextMeshProUGUI txt)
+    {
+
+        float duration = 2f; //fade out over 2 seconds
+        float currentTime = 0f;
+        txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, 255);
+        while (currentTime < duration)
+        {
+            float alpha = Mathf.Lerp(1f, 0f, currentTime / duration);
+            txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, alpha);
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
+        invFullObj.SetActive(false);
+
+        yield break;
+
     }
 }

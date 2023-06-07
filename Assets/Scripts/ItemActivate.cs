@@ -22,7 +22,11 @@ public class ItemActivate : MonoBehaviour, IInteractable
     {
         //the inventory slots should fill up sequentially, so first 1 then 2 then 3
         //first check if the inventory is full
+        if(inv.nextAvail() != -1)
+        {
+            gameObject.SetActive(false);
+            
+        }
         inv.updateText(select);
-        gameObject.SetActive(false);
     }
 }
