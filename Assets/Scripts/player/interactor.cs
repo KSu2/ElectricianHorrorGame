@@ -11,13 +11,19 @@ public class interactor : MonoBehaviour
     public Transform intSource;
     public float intRange;
     public GameObject holdable;
+    public GameObject holdableLight;
     public GameObject player;
     public inventoryMenu inv;
+    public Material brightMat;
+    public Material darkMat;
+    bool holdableLanternOn;
 
     void Start()
     {
         player = GameObject.Find("firstPersonPlayer");
         inv = player.GetComponent<inventoryMenu>();
+        holdableLight.SetActive(true);
+        holdableLanternOn = true;
     }
 
     // Update is called once per frame
@@ -37,7 +43,6 @@ public class interactor : MonoBehaviour
                     //the holdableItem
                     Debug.Log("left click!");
                     useItem();
-                    holdable.SetActive(false);
                 } 
                 //right click drop item
                 else if (Input.GetButtonDown("Fire2"))
@@ -71,19 +76,34 @@ public class interactor : MonoBehaviour
     public void useItem()
     {
         //check what type of item is currently equipped
-        if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.health)
+        if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Medkit)
         {
             Debug.Log("we have used a health item");
             //Health item functionality
             float currentHealth = player.GetComponent<playerHealth>().health;
-            player.GetComponent<playerHealth>().health = player.GetComponent<playerHealth>().health + 1f;
+            float maxHP = player.GetComponent<playerHealth>().maxHealth;
+            if(currentHealth < maxHP)
+            {
+                player.GetComponent<playerHealth>().health = player.GetComponent<playerHealth>().health + 3f;
+                holdable.SetActive(false);
+            }   
         }
-        else if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Type2)
+        else if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Lantern)
         {
-            /*
-             * Fill in Type2 item functionality here
-             */
-            Debug.Log("we have used a Type2 item");
+            Debug.Log("we have used a Lantern item");
+            //Lantern functionality
+            if(holdableLanternOn)
+            {
+                holdableLight.SetActive(false);
+                holdableLanternOn = false;
+                holdable.GetComponent<Renderer>().material = darkMat;
+            }
+            else
+            {
+                holdableLight.SetActive(true);
+                holdableLanternOn = true;
+                holdable.GetComponent<Renderer>().material = brightMat;
+            }
         }
         else if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Type3)
         {

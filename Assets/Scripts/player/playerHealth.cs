@@ -29,6 +29,11 @@ public class playerHealth : MonoBehaviour
     {
         isDamaged = Physics.CheckSphere(player.position, 1f, damageMask);
 
+        if(health>maxHealth)
+        {
+            health = maxHealth;
+        }
+
         if(isDamaged && !delayOn)
         {
             health -= 1;

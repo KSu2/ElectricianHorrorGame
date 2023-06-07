@@ -9,6 +9,7 @@ public class inventoryMenu : MonoBehaviour
     public GameObject invFullObj;
 
     public Material HealthMat;
+    public Material brightMat;
 
     [SerializeField] public GameObject slot1;
     [SerializeField] public GameObject slot2;
@@ -120,17 +121,18 @@ public class inventoryMenu : MonoBehaviour
             string type = slots[slot].GetComponent<TextMeshProUGUI>().text;
             slots[slot].GetComponent<TextMeshProUGUI>().text = "Empty";
             //set the holdable Type of the GameObject
-            if(type == "health")
+            if(type == "Medkit")
             {
-                holdable.GetComponent<ItemActivate>().select= ItemActivate.Type.health;
+                holdable.GetComponent<ItemActivate>().select= ItemActivate.Type.Medkit;
                 holdable.GetComponent<Renderer>().material = HealthMat;
             } 
-            else if(type == "Type2")
+            else if(type == "Lantern")
             {
-                holdable.GetComponent<ItemActivate>().select = ItemActivate.Type.Type2;
+                holdable.GetComponent<ItemActivate>().select = ItemActivate.Type.Lantern;
+                holdable.GetComponent<Renderer>().material = brightMat;
                 
                 //set appearance of item
-                //holdable.GetComponent<Renderer>().material = Type2Mat;
+                //holdable.GetComponent<Renderer>().material = LanternMat;
             }
             else if(type == "Type3")
             {
