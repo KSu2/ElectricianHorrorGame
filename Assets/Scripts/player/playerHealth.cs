@@ -13,7 +13,7 @@ public class playerHealth : MonoBehaviour
     public LayerMask damageMask;
 
     public static bool delayOn;
-    public float damageDelayTime;
+    public float damageDelayTime = 1;
 
     public updateBars updateHeal;
 
