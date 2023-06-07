@@ -39,7 +39,12 @@ public class mouseLook : MonoBehaviour
         }
         if(damRotation > 0)
         {
-            damRotation -= Time.timeScale;
+            damRotation -= Time.timeScale*.1f;
+        }
+
+        else if(damRotation < 0)
+        {
+            damRotation += Time.timeScale*.1f;
         }
         
         if(playerHealth.delayOn && !camDelay)
@@ -51,7 +56,14 @@ public class mouseLook : MonoBehaviour
 
     IEnumerator CamRotFunc()
         { 
-            damRotation += 10f;
+            if (Random.value < .5)
+            {
+                damRotation += 10f * Time.timeScale;
+            }
+            else
+            {
+                damRotation -= 10f * Time.timeScale;
+            }
             yield return new WaitForSeconds(camDelayTime*(1-camDelayTimePerc));
             damRotation = 0f;
             yield return new WaitForSeconds(camDelayTime*camDelayTimePerc);
