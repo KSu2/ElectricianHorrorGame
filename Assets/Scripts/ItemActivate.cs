@@ -6,10 +6,17 @@ using TMPro;
 public class ItemActivate : MonoBehaviour, IInteractable
 {
     //determine the item type
-    public enum Type { None = 0, health };
+    public enum Type { None = 0, health, Type2, Type3, Type4 };
     public Type select;
-   
+
+    public GameObject player;
     public inventoryMenu inv;
+
+    public void Start()
+    {
+        player = GameObject.Find("firstPersonPlayer");
+        inv = player.GetComponent<inventoryMenu>();
+    }
 
     public void Interact()
     {
@@ -19,6 +26,16 @@ public class ItemActivate : MonoBehaviour, IInteractable
         if (select == Type.health && inv.updateText("health"))
         {
             Debug.Log("selected health item");
+            gameObject.SetActive(false);
+        }
+        else if (select == Type.Type2 && inv.updateText("Type2"))
+        {
+            Debug.Log("selected Type 2");
+            gameObject.SetActive(false);
+        } 
+        else if (select == Type.Type3 && inv.updateText("Type3"))
+        {
+            Debug.Log("selected Type 2");
             gameObject.SetActive(false);
         }
     }

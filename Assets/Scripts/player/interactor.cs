@@ -61,13 +61,26 @@ public class interactor : MonoBehaviour
         {
             Debug.Log("we have used a health item");
         }
+        else if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Type2)
+        {
+            /*
+             * Fill in Type2 item functionality here
+             */
+            Debug.Log("we have used a Type2 item");
+        }
+        else if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Type3)
+        {
+            /*
+             * Fill in Type3 item functionality here
+             */
+            Debug.Log("we have used a Type3 item");
+        }
     }
 
     public void dropItem()
     {
         //create an instance of the item on the ground with the same material as the holdable item
         
-
         //change this to simply moving the item to the position and setting it to active
         //this will make it so we don't have to duplicate item GameObjects in the scene which may slow down the performance
         Vector3 pos = new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z + 5);
