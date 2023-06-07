@@ -11,6 +11,12 @@ public class interactor : MonoBehaviour
     public Transform intSource;
     public float intRange;
     public GameObject holdable;
+    public GameObject player;
+
+    void Start()
+    {
+        player = GameObject.Find("firstPersonPlayer");
+    }
 
     // Update is called once per frame
     void Update()
@@ -60,6 +66,9 @@ public class interactor : MonoBehaviour
         if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.health)
         {
             Debug.Log("we have used a health item");
+            //Health item functionality
+            float currentHealth = player.GetComponent<playerHealth>().health;
+            player.GetComponent<playerHealth>().health = player.GetComponent<playerHealth>().health + 1f;
         }
         else if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Type2)
         {

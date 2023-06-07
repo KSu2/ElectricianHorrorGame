@@ -32,10 +32,10 @@ public class playerHealth : MonoBehaviour
         if(isDamaged && !delayOn)
         {
             health -= 1;
-            updateHeal.updateHealth(health/maxHealth);
             delayOn = true;
             StartCoroutine(DelayFunc());
         }
+        updateHeal.updateHealth(health / maxHealth);
     }
 
     IEnumerator DelayFunc()
