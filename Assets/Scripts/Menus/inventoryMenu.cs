@@ -9,6 +9,7 @@ public class inventoryMenu : MonoBehaviour
     public GameObject invFullObj;
 
     public Material HealthMat;
+    public Material brightMat;
 
     [SerializeField] public GameObject slot1;
     [SerializeField] public GameObject slot2;
@@ -126,6 +127,7 @@ public class inventoryMenu : MonoBehaviour
             else if(type == "Type2")
             {
                 holdable.GetComponent<ItemActivate>().select = ItemActivate.Type.Type2;
+                holdable.GetComponent<Renderer>().material = brightMat;
                 
                 //set appearance of item
                 //holdable.GetComponent<Renderer>().material = Type2Mat;

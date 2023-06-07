@@ -35,7 +35,6 @@ public class interactor : MonoBehaviour
                     //the holdableItem
                     Debug.Log("left click!");
                     useItem();
-                    holdable.SetActive(false);
                 } 
                 //right click drop item
                 else if (Input.GetButtonDown("Fire2"))
@@ -68,13 +67,16 @@ public class interactor : MonoBehaviour
             Debug.Log("we have used a health item");
             //Health item functionality
             float currentHealth = player.GetComponent<playerHealth>().health;
-            player.GetComponent<playerHealth>().health = player.GetComponent<playerHealth>().health + 1f;
+            float maxHP = player.GetComponent<playerHealth>().maxHealth;
+            if(currentHealth < maxHP)
+            {
+                player.GetComponent<playerHealth>().health = player.GetComponent<playerHealth>().health + 3f;
+                holdable.SetActive(false);
+            }   
         }
         else if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Type2)
         {
-            /*
-             * Fill in Type2 item functionality here
-             */
+            
             Debug.Log("we have used a Type2 item");
         }
         else if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Type3)
