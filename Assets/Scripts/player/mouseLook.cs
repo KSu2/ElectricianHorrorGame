@@ -14,13 +14,14 @@ public class mouseLook : MonoBehaviour
     public float camDelayTimePerc = .9f;
 
     float xRotation = 0f;
-    float damRotation = 0f;
+    float damRotation;
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         camDelay = false;
+        damRotation = 0f;
     }
 
     // Update is called once per frame
@@ -37,32 +38,34 @@ public class mouseLook : MonoBehaviour
             transform.localRotation = Quaternion.Euler(xRotation, 0f, damRotation);
             playerBody.Rotate(Vector3.up * mouseX);
         }
-        if(damRotation > 0)
-        {
-            damRotation -= Time.timeScale*.1f;
-        }
-
-        else if(damRotation < 0)
-        {
-            damRotation += Time.timeScale*.1f;
-        }
         
         if(playerHealth.delayOn && !camDelay)
         {
             camDelay = true;
             StartCoroutine(CamRotFunc());
         }
+        
     }
 
     IEnumerator CamRotFunc()
         { 
             if (Random.value < .5)
             {
-                damRotation += 10f * Time.timeScale;
+                Debug.Log("50+");
+                damRotation += 10f;
+                while(damRotation > 0f)
+                {
+                    damRotation -= Time.timeScale*.1f;
+                }
             }
             else
             {
-                damRotation -= 10f * Time.timeScale;
+                Debug.Log("50-");
+                damRotation -= 10f;
+                while(damRotation < 0f)
+                {
+                    damRotation += Time.timeScale*.1f;
+                }
             }
             yield return new WaitForSeconds(camDelayTime*(1-camDelayTimePerc));
             damRotation = 0f;
