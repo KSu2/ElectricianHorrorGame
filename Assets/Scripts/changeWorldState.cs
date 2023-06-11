@@ -35,7 +35,7 @@ public class changeWorldState : MonoBehaviour
             RenderSettings.ambientIntensity = 0f;
             RenderSettings.fog = true;
             RenderSettings.skybox = skyMat2;
-            RenderSettings.reflectionIntensity = 0.05f;
+            RenderSettings.reflectionIntensity = 0.02f;
         } 
     }
 }
