@@ -144,9 +144,9 @@ public class inventoryMenu : MonoBehaviour
                 //set appearance of item
                 //holdable.GetComponent<Renderer>().material = LanternMat;
             }
-            else if(type == "Type3")
+            else if(type == "Axe")
             {
-                holdable.GetComponent<ItemActivate>().select = ItemActivate.Type.Type3;
+                holdable.GetComponent<ItemActivate>().select = ItemActivate.Type.Axe;
 
                 //set appearance of item
                 //holdable.GetComponent<Renderer>().material = Type3Mat;

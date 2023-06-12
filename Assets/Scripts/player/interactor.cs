@@ -16,6 +16,7 @@ public class interactor : MonoBehaviour
     public inventoryMenu inv;
     public Material brightMat;
     public Material darkMat;
+    public Transform droppedItems;
 
     void Start()
     {
@@ -66,6 +67,14 @@ public class interactor : MonoBehaviour
                         interactObj.Interact();
                     }
                 }
+                for(int i = 0; i< droppedItems.transform.childCount; i++)
+                {
+                    var child = droppedItems.transform.GetChild(i).gameObject;
+                    if(!child.activeSelf)
+                    {
+                        Destroy(child);
+                    }
+                }
             }
         } 
     }
@@ -90,7 +99,7 @@ public class interactor : MonoBehaviour
             Debug.Log("we have used a Lantern item");
             //Lantern functionality
         }
-        else if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Type3)
+        else if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Axe)
         {
             /*
              * Fill in Type3 item functionality here
@@ -105,9 +114,11 @@ public class interactor : MonoBehaviour
         
         //change this to simply moving the item to the position and setting it to active
         //this will make it so we don't have to duplicate item GameObjects in the scene which may slow down the performance
-        Vector3 pos = new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z + 5);
+        //Vector3 pos = new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z + 5);
         
         GameObject clone = Instantiate(holdable, gameObject.transform.position + gameObject.transform.forward * 5, Quaternion.identity);
+        clone.transform.SetParent(droppedItems);
+
     }
 
 }

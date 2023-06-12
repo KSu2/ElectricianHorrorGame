@@ -6,7 +6,7 @@ using TMPro;
 public class ItemActivate : MonoBehaviour, IInteractable
 {
     //determine the item type
-    public enum Type { None = 0, Medkit, Lantern, Type3, Type4 };
+    public enum Type { None = 0, Medkit, Lantern, Axe, Type4 };
     public Type select;
 
     public GameObject player;
