@@ -7,6 +7,7 @@ public class inventoryMenu : MonoBehaviour
 {
     public GameObject invMenuObj;
     public GameObject invFullObj;
+    
 
     public TextMeshProUGUI invFullMsg;
     
@@ -27,13 +28,14 @@ public class inventoryMenu : MonoBehaviour
 
     public static bool invOpen;
 
-    public GameObject holdable;
+    public Transform holdable;
+    public GameObject medkit;
 
     // Start is called before the first frame update
     void Start()
     {
         invMenuObj.SetActive(false);
-        holdable.SetActive(false);
+        //holdable.SetActive(false);
         isOpen = new bool[] { true, true, true };
         slots = new GameObject[] { slot1, slot2, slot3 };
         holdableLight.SetActive(false);
@@ -84,8 +86,6 @@ public class inventoryMenu : MonoBehaviour
         int next = nextAvail();
         if(invCount > 2)
         {
-            //eventually change this to a message that pops on screen
-            Debug.Log("Inventory Full");
             //invFullObj.SetActive(true);
             invFullObj.SetActive(true);
             showErrMsg(invFullMsg);
@@ -121,9 +121,9 @@ public class inventoryMenu : MonoBehaviour
     public void equipItem(int slot)
     {
         Debug.Log("slot: " + slot);
-        if (!isOpen[slot] && !holdable.activeInHierarchy)
+        if (!isOpen[slot] /*&& !holdable.activeInHierarchy*/)
         {
-            holdable.SetActive(true);
+            //holdable.SetActive(true);
             invCount--;
             isOpen[slot] = true;
             //set the text of the corresponding slot to "Empty"
@@ -133,7 +133,9 @@ public class inventoryMenu : MonoBehaviour
             if(type == "Medkit")
             {
                 holdable.GetComponent<ItemActivate>().select= ItemActivate.Type.Medkit;
-                holdable.GetComponent<Renderer>().material = HealthMat;
+                //holdable.GetComponent<Renderer>().material = HealthMat;
+                GameObject holdableMedkit = Instantiate(medkit);
+                holdableMedkit.transform.SetParent(holdable);
             } 
             else if(type == "Lantern")
             {
@@ -166,9 +168,9 @@ public class inventoryMenu : MonoBehaviour
     public void unequipItem()
     {
         int next = nextAvail();
-        if(next != -1 && holdable.activeInHierarchy)
+        if(next != -1 /*&& holdable.activeInHierarchy*/)
         {
-            holdable.SetActive(false);
+            //holdable.SetActive(false);
             updateText(holdable.GetComponent<ItemActivate>().select);
         }
         else
