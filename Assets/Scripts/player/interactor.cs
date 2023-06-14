@@ -10,12 +10,12 @@ public class interactor : MonoBehaviour
 {
     public Transform intSource;
     public float intRange;
-    public GameObject holdable;
-    public GameObject holdableLight;
+    public Transform holdable;
     public GameObject player;
     public inventoryMenu inv;
     public Material brightMat;
     public Material darkMat;
+    public GameObject lanternItem;
     public Transform droppedItems;
 
     void Start()
@@ -32,7 +32,7 @@ public class interactor : MonoBehaviour
         {
             //check if HoldableItem is active 
             //GameObject.activeInHierarchy
-            if (holdable.activeInHierarchy)
+            if (holdable.childCount > 0)
             {
                 //left click use item
                 if (Input.GetButtonDown("Fire1"))
@@ -46,8 +46,8 @@ public class interactor : MonoBehaviour
                 {
                     Debug.Log("right click!");
                     dropItem();
-                    holdableLight.SetActive(false);
-                    holdable.SetActive(false);
+                    //holdable.SetActive(false);
+                    Destroy(holdable.transform.GetChild(0).gameObject);
                 }
                 //middle click re-equip the item
                 else if (Input.GetButtonDown("Fire3"))
@@ -91,13 +91,13 @@ public class interactor : MonoBehaviour
             if(currentHealth < maxHP)
             {
                 player.GetComponent<playerHealth>().health = player.GetComponent<playerHealth>().health + 3f;
-                holdable.SetActive(false);
+                //holdable.SetActive(false);
+                Destroy(holdable.transform.GetChild(0).gameObject);
             }   
         }
         else if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Lantern)
         {
             Debug.Log("we have used a Lantern item");
-            //Lantern functionality
         }
         else if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Axe)
         {
@@ -116,7 +116,7 @@ public class interactor : MonoBehaviour
         //this will make it so we don't have to duplicate item GameObjects in the scene which may slow down the performance
         //Vector3 pos = new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z + 5);
         
-        GameObject clone = Instantiate(holdable, gameObject.transform.position + gameObject.transform.forward * 5, Quaternion.identity);
+        GameObject clone = Instantiate(holdable.transform.GetChild(0).gameObject, gameObject.transform.position + gameObject.transform.forward * 5, Quaternion.identity);
         clone.transform.SetParent(droppedItems);
 
     }
