@@ -17,6 +17,7 @@ public class interactor : MonoBehaviour
     public Material darkMat;
     public GameObject lanternItem;
     public Transform droppedItems;
+    public LayerMask destMask;
 
     void Start()
     {
@@ -101,10 +102,19 @@ public class interactor : MonoBehaviour
         }
         else if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Axe)
         {
-            /*
-             * Fill in Type3 item functionality here
-             */
-            Debug.Log("we have used a Type3 item");
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Ray r = new Ray(intSource.position, intSource.forward);
+                if (Physics.Raycast(r, out RaycastHit hitInfo, intRange, destMask))
+                {
+                    Debug.Log("we have used a Type3 item");
+                    if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
+                    {
+                        interactObj.Interact();
+                        Destroy(holdable.transform.GetChild(0).gameObject);
+                    }
+                }
+            }
         }
     }
 
