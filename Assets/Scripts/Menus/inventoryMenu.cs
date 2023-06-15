@@ -30,6 +30,7 @@ public class inventoryMenu : MonoBehaviour
     public Transform holdable;
     public GameObject medkit;
     public GameObject lantern;
+    public GameObject axe;
 
     // Start is called before the first frame update
     void Start()
@@ -120,7 +121,7 @@ public class inventoryMenu : MonoBehaviour
     public void equipItem(int slot)
     {
         Debug.Log("slot: " + slot);
-        if (!isOpen[slot] /*&& !holdable.activeInHierarchy*/)
+        if (!isOpen[slot] && holdable.childCount == 0)
         {
             //holdable.SetActive(true);
             invCount--;
@@ -133,13 +134,13 @@ public class inventoryMenu : MonoBehaviour
             {
                 holdable.GetComponent<ItemActivate>().select= ItemActivate.Type.Medkit;
                 //holdable.GetComponent<Renderer>().material = HealthMat;
-                GameObject holdableMedkit = Instantiate(medkit, holdable.transform.position, transform.rotation);
+                GameObject holdableMedkit = Instantiate(medkit, holdable.transform.position, holdable.transform.rotation);
                 holdableMedkit.transform.SetParent(holdable);
             } 
             else if(type == "Lantern")
             {
                 holdable.GetComponent<ItemActivate>().select = ItemActivate.Type.Lantern;
-                GameObject holdableLantern = Instantiate(lantern, holdable.transform.position, transform.rotation);
+                GameObject holdableLantern = Instantiate(lantern, holdable.transform.position, holdable.transform.rotation);
                 holdableLantern.transform.SetParent(holdable);
                 
                 //set appearance of item
@@ -148,6 +149,8 @@ public class inventoryMenu : MonoBehaviour
             else if(type == "Axe")
             {
                 holdable.GetComponent<ItemActivate>().select = ItemActivate.Type.Axe;
+                GameObject holdableAxe = Instantiate(axe, holdable.transform.position, holdable.transform.rotation);
+                holdableAxe.transform.SetParent(holdable);
 
                 //set appearance of item
                 //holdable.GetComponent<Renderer>().material = Type3Mat;
@@ -167,7 +170,7 @@ public class inventoryMenu : MonoBehaviour
     public void unequipItem()
     {
         int next = nextAvail();
-        if(next != -1 /*&& holdable.activeInHierarchy*/)
+        if(next != -1 && holdable.childCount > 0)
         {
             //holdable.SetActive(false);
             Destroy(holdable.transform.GetChild(0).gameObject);

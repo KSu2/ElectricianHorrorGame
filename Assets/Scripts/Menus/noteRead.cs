@@ -22,7 +22,7 @@ public class noteRead : MonoBehaviour, IInteractable
     {
         //add an area trigger so this isn't firing all the time
         distance = Vector3.Distance(note.transform.position, player.transform.position);
-        if(distance > maxDis || Input.GetKeyDown(KeyCode.Escape))
+        if(distance > maxDis || Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Inv") || Input.GetButtonDown("Fire2"))
         {
             CloseNote();
         }
