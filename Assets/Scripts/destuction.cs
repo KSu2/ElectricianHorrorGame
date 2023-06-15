@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class destuction : MonoBehaviour, IInteractable
 {
-    public GameObject currentlyHeld;
+    public Transform currentlyHeld;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +15,7 @@ public class destuction : MonoBehaviour, IInteractable
     // Update is called once per frame
     public void Interact()
     {
-        if(currentlyHeld.GetComponent<ItemActivate>().select == ItemActivate.Type.Axe)
+        if(currentlyHeld.GetComponent<ItemActivate>().select == ItemActivate.Type.Axe && currentlyHeld.childCount > 0)
         {
             gameObject.SetActive(false);
         }

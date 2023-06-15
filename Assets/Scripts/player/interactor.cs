@@ -94,6 +94,7 @@ public class interactor : MonoBehaviour
                 player.GetComponent<playerHealth>().health = player.GetComponent<playerHealth>().health + 3f;
                 //holdable.SetActive(false);
                 Destroy(holdable.transform.GetChild(0).gameObject);
+                holdable.GetComponent<ItemActivate>().select= ItemActivate.Type.None;
             }   
         }
         else if(holdable.GetComponent<ItemActivate>().select == ItemActivate.Type.Lantern)
@@ -112,6 +113,7 @@ public class interactor : MonoBehaviour
                     {
                         interactObj.Interact();
                         Destroy(holdable.transform.GetChild(0).gameObject);
+                        holdable.GetComponent<ItemActivate>().select= ItemActivate.Type.None;
                     }
                 }
             }
@@ -128,6 +130,7 @@ public class interactor : MonoBehaviour
         
         GameObject clone = Instantiate(holdable.transform.GetChild(0).gameObject, gameObject.transform.position + gameObject.transform.forward * 5, Quaternion.identity);
         clone.transform.SetParent(droppedItems);
+        holdable.GetComponent<ItemActivate>().select= ItemActivate.Type.None;
 
     }
 

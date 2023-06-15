@@ -132,7 +132,7 @@ public class inventoryMenu : MonoBehaviour
             //set the holdable Type of the GameObject
             if(type == "Medkit")
             {
-                holdable.GetComponent<ItemActivate>().select= ItemActivate.Type.Medkit;
+                holdable.GetComponent<ItemActivate>().select = ItemActivate.Type.Medkit;
                 //holdable.GetComponent<Renderer>().material = HealthMat;
                 GameObject holdableMedkit = Instantiate(medkit, holdable.transform.position, holdable.transform.rotation);
                 holdableMedkit.transform.SetParent(holdable);
@@ -175,6 +175,7 @@ public class inventoryMenu : MonoBehaviour
             //holdable.SetActive(false);
             Destroy(holdable.transform.GetChild(0).gameObject);
             updateText(holdable.GetComponent<ItemActivate>().select);
+            holdable.GetComponent<ItemActivate>().select= ItemActivate.Type.None;
         }
         else
         {
