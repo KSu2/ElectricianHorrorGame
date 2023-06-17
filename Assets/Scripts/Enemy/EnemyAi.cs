@@ -8,6 +8,8 @@ public class EnemyAi : MonoBehaviour
 
     //the agent
     public NavMeshAgent agent;
+    public Material matCalm;
+    public Material matChase;
 
     //the player
     public Transform player;
@@ -20,7 +22,9 @@ public class EnemyAi : MonoBehaviour
     public float walkPointRange;
 
     public float sightRange;
+    public float sightAngle;
     public bool playerInSightRange;
+    private Vector3 lastPlayerPos;
 
     public float chaseSpeed;
     public float patrolSpeed;
@@ -29,6 +33,8 @@ public class EnemyAi : MonoBehaviour
     {
         chaseSpeed = 10f;
         patrolSpeed = 5f;
+        sightAngle = 30f;
+        playerInSightRange = false;
         player = GameObject.Find("firstPersonPlayer").transform;
         agent = GetComponent<NavMeshAgent>();
     }
@@ -46,14 +52,38 @@ public class EnemyAi : MonoBehaviour
          */
         //probably add two speeds as well
         //one for chasing and one for patroling
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        //playerInSightRange = Physics.CheckSphere(transform.position, sightRange/3, whatIsPlayer);
 
-        if (!playerInSightRange) Patroling();
-        if (playerInSightRange) ChasePlayer();
+        Vector3 playerPos = player.transform.position;
+        Vector3 vectorToPlayer = playerPos - transform.position;
+
+        if(Vector3.Distance(transform.position, playerPos) <= sightRange)
+        {
+            if(Vector3.Angle(transform.forward, vectorToPlayer) <= sightAngle)
+            {
+                playerInSightRange = true;
+                lastPlayerPos = playerPos;
+            }
+        }
+        else if(Vector3.Distance(transform.position, playerPos) > sightRange)
+        {
+            playerInSightRange = false;
+        }
+
+        if (!playerInSightRange)
+        {
+            Patroling();
+        }
+
+        if (playerInSightRange)
+        {
+            ChasePlayer();
+        } 
     }
 
     private void Patroling()
     {
+        GetComponent<MeshRenderer>().material = matCalm;
         agent.speed = patrolSpeed;
         //Debug.Log("Patroling");
         if (!walkPointSet) SearchWalkPoint();
@@ -73,6 +103,7 @@ public class EnemyAi : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
         //Debug.Log("Walk Point: " + walkPoint);
+        walkPoint = lastPlayerPos;
 
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
         {
@@ -81,6 +112,7 @@ public class EnemyAi : MonoBehaviour
     }
     private void ChasePlayer()
     {
+        GetComponent<MeshRenderer>().material = matChase;
         //add de-aggro timer
         //add memorize player last position function
         agent.speed = chaseSpeed;

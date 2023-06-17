@@ -919,6 +919,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 405546930}
+  matCalm: {fileID: 2100000, guid: 6cafa049904ade54391abc20eb6adcdf, type: 2}
+  matChase: {fileID: 2100000, guid: 84eda97b83c866a4f8e71b62121572d3, type: 2}
   player: {fileID: 1847700040}
   a: {fileID: 0}
   whatIsGround:
@@ -930,7 +932,8 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
   walkPointRange: 7
-  sightRange: 7
+  sightRange: 14
+  sightAngle: 0
   playerInSightRange: 0
   chaseSpeed: 0
   patrolSpeed: 0
@@ -1869,7 +1872,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1032217339}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.13904977, y: 0.46000004, z: 0}
+  m_LocalPosition: {x: 0, y: 0.46000004, z: 0.21000004}
   m_LocalScale: {x: 0.81073654, y: 0.22422, z: 0.6651329}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2505,14 +2508,16 @@ MonoBehaviour:
   invFullMsg: {fileID: 175721422}
   HealthMat: {fileID: 2100000, guid: 6cafa049904ade54391abc20eb6adcdf, type: 2}
   brightMat: {fileID: 0}
-  holdableLight: {fileID: 0}
   slot1: {fileID: 668819155}
   slot2: {fileID: 669529731}
   slot3: {fileID: 224537983}
   invCount: 0
   isOpen: 
   slots: []
-  holdable: {fileID: 1616996332}
+  holdable: {fileID: 1616996333}
+  medkit: {fileID: 0}
+  lantern: {fileID: 0}
+  axe: {fileID: 0}
 --- !u!4 &1847700040 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6790174293875512296, guid: fdb18c1516fadb240ab0798617b83a7d, type: 3}
