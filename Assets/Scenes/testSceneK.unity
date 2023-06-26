@@ -899,7 +899,7 @@ GameObject:
   - component: {fileID: 405546931}
   - component: {fileID: 405546930}
   - component: {fileID: 405546929}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -921,7 +921,6 @@ MonoBehaviour:
   agent: {fileID: 405546930}
   matCalm: {fileID: 2100000, guid: 6cafa049904ade54391abc20eb6adcdf, type: 2}
   matChase: {fileID: 2100000, guid: 84eda97b83c866a4f8e71b62121572d3, type: 2}
-  player: {fileID: 1847700040}
   a: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
@@ -3319,7 +3318,7 @@ PrefabInstance:
     - target: {fileID: 6790174293845636267, guid: fdb18c1516fadb240ab0798617b83a7d, type: 3}
       propertyPath: holdable
       value: 
-      objectReference: {fileID: 1616996332}
+      objectReference: {fileID: 1616996333}
     - target: {fileID: 6790174293845636267, guid: fdb18c1516fadb240ab0798617b83a7d, type: 3}
       propertyPath: intRange
       value: 7

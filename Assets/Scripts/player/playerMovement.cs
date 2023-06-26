@@ -39,6 +39,7 @@ public class playerMovement : MonoBehaviour
 
     void Start()
     {
+        References.thePlayer = gameObject;
         stamina = maxStam;
     }
     

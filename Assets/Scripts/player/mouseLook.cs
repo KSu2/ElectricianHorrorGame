@@ -5,13 +5,13 @@ using UnityEngine;
 public class mouseLook : MonoBehaviour
 {
 
-    public float mouseSens = 100f;
+    public float mouseSens;
 
     public Transform playerBody;
 
     bool camDelay;
-    public float camDelayTime = 1f;
-    public float camDelayTimePerc = .9f;
+    public float camDelayTime;
+    public float camDelayTimePerc;
 
     float xRotation = 0f;
     float damRotation;
@@ -19,6 +19,9 @@ public class mouseLook : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mouseSens = 500f;
+        camDelayTime = 1f;
+        camDelayTimePerc = .9f;
         Cursor.lockState = CursorLockMode.Locked;
         camDelay = false;
         damRotation = 0f;

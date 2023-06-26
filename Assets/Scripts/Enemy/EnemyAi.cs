@@ -12,7 +12,6 @@ public class EnemyAi : MonoBehaviour
     public Material matChase;
 
     //the player
-    public Transform player;
     public Transform a;
 
     public LayerMask whatIsGround, whatIsPlayer;
@@ -35,7 +34,6 @@ public class EnemyAi : MonoBehaviour
         patrolSpeed = 5f;
         sightAngle = 30f;
         playerInSightRange = false;
-        player = GameObject.Find("firstPersonPlayer").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -54,16 +52,17 @@ public class EnemyAi : MonoBehaviour
         //one for chasing and one for patroling
         //playerInSightRange = Physics.CheckSphere(transform.position, sightRange/3, whatIsPlayer);
 
-        Vector3 playerPos = player.transform.position;
+        Vector3 playerPos = References.thePlayer.transform.position;
         Vector3 vectorToPlayer = playerPos - transform.position;
 
-        if(Vector3.Distance(transform.position, playerPos) <= sightRange)
+        //Default detection
+        if((Vector3.Distance(transform.position, playerPos) <= sightRange && Vector3.Angle(transform.forward, vectorToPlayer) <= sightAngle) || 
+
+        //Detection angle is increased if player gets too close
+        (Vector3.Distance(transform.position, playerPos) <= sightRange/3 && Vector3.Angle(transform.forward, vectorToPlayer) <= sightAngle*3))
         {
-            if(Vector3.Angle(transform.forward, vectorToPlayer) <= sightAngle)
-            {
                 playerInSightRange = true;
                 lastPlayerPos = playerPos;
-            }
         }
         else if(Vector3.Distance(transform.position, playerPos) > sightRange)
         {
@@ -83,7 +82,7 @@ public class EnemyAi : MonoBehaviour
 
     private void Patroling()
     {
-        GetComponent<MeshRenderer>().material = matCalm;
+        //GetComponent<MeshRenderer>().material = matCalm;
         agent.speed = patrolSpeed;
         //Debug.Log("Patroling");
         if (!walkPointSet) SearchWalkPoint();
@@ -112,12 +111,12 @@ public class EnemyAi : MonoBehaviour
     }
     private void ChasePlayer()
     {
-        GetComponent<MeshRenderer>().material = matChase;
+        //GetComponent<MeshRenderer>().material = matChase;
         //add de-aggro timer
         //add memorize player last position function
         agent.speed = chaseSpeed;
         //Debug.Log("Chasing");
-        agent.SetDestination(player.position);
+        agent.SetDestination(References.thePlayer.transform.position);
     }
 
 

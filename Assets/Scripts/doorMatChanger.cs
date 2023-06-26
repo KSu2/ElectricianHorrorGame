@@ -11,7 +11,7 @@ public class doorMatChanger : MonoBehaviour
     public GameObject player;
     public GameObject doorLight;
     private float distance;
-    public float opaDis = 20f;
+    public float opaDis;
     
 
 
@@ -20,6 +20,7 @@ public class doorMatChanger : MonoBehaviour
     {
         door.GetComponent<Renderer>().material = doorMatOff;
         rend = GetComponent<Renderer>();
+        opaDis = 40f;
         doorLight.SetActive(false);
     }
 
