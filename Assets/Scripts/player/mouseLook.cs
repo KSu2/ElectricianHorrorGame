@@ -9,22 +9,13 @@ public class mouseLook : MonoBehaviour
 
     public Transform playerBody;
 
-    bool camDelay;
-    public float camDelayTime;
-    public float camDelayTimePerc;
-
-    float xRotation = 0f;
-    float damRotation;
+    private float xRotation = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
         mouseSens = 500f;
-        camDelayTime = 1f;
-        camDelayTimePerc = .9f;
         Cursor.lockState = CursorLockMode.Locked;
-        camDelay = false;
-        damRotation = 0f;
         References.theCamera = gameObject;
     }
 
@@ -39,41 +30,8 @@ public class mouseLook : MonoBehaviour
             xRotation -= mouseY;
             xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-            transform.localRotation = Quaternion.Euler(xRotation, 0f, damRotation);
+            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
             playerBody.Rotate(Vector3.up * mouseX);
-        }
-        
-        if(playerHealth.delayOn && !camDelay)
-        {
-            camDelay = true;
-            StartCoroutine(CamRotFunc());
-        }
-        
+        }    
     }
-
-    IEnumerator CamRotFunc()
-        { 
-            if (Random.value < .5)
-            {
-                Debug.Log("50+");
-                damRotation += 10f;
-                while(damRotation > 0f)
-                {
-                    damRotation -= Time.timeScale*.1f;
-                }
-            }
-            else
-            {
-                Debug.Log("50-");
-                damRotation -= 10f;
-                while(damRotation < 0f)
-                {
-                    damRotation += Time.timeScale*.1f;
-                }
-            }
-            yield return new WaitForSeconds(camDelayTime*(1-camDelayTimePerc));
-            damRotation = 0f;
-            yield return new WaitForSeconds(camDelayTime*camDelayTimePerc);
-            camDelay = false;
-        }
 }
