@@ -16,7 +16,7 @@ public class playerMovement : MonoBehaviour
     public float maxStam = 5f;
     float stamina;
     float multiplier = 1f;
-    bool sprintDelay;
+    public static bool sprintDelay;
     public float sprintDelayTime = 4f;
 
     public Transform groundCheck;
@@ -24,7 +24,7 @@ public class playerMovement : MonoBehaviour
     public LayerMask groundMask;
 
     Vector3 velocity;
-    bool isGrounded;
+    public static bool isGrounded;
     float doubleJump = 0;
     float jumpTime = 0f;
 

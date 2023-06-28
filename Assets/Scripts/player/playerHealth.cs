@@ -9,7 +9,7 @@ public class playerHealth : MonoBehaviour
 
     public Transform player;
 
-    bool isDamaged;
+    private bool isDamaged;
     public LayerMask damageMask;
 
     public static bool delayOn;

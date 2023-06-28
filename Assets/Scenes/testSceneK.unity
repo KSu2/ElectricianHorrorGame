@@ -899,6 +899,7 @@ GameObject:
   - component: {fileID: 405546931}
   - component: {fileID: 405546930}
   - component: {fileID: 405546929}
+  - component: {fileID: 405546935}
   m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
@@ -913,7 +914,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405546928}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d75e1322c8a9ed642be7113450644ba8, type: 3}
   m_Name: 
@@ -1047,6 +1048,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &405546935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405546928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5cb7902f9fc90645b0d4bc2b351b53c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointSet: 0
+  walkPointRange: 0
+  hearingRange: 17
+  sprintMult: 3
+  jumpMod: 1.2
+  chaseSpeed: 5
+  patrolSpeed: 3
 --- !u!1 &445688428
 GameObject:
   m_ObjectHideFlags: 0

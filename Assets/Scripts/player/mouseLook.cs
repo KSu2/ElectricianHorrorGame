@@ -25,6 +25,7 @@ public class mouseLook : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         camDelay = false;
         damRotation = 0f;
+        References.theCamera = gameObject;
     }
 
     // Update is called once per frame

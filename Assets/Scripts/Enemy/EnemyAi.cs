@@ -72,6 +72,7 @@ public class EnemyAi : MonoBehaviour
         if (!playerInSightRange)
         {
             Patroling();
+
         }
 
         if (playerInSightRange)
