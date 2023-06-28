@@ -12,6 +12,7 @@ public class playerMovement : MonoBehaviour
     public float doubleJumps = 1;
     public float coyoteTime = 1f;
     public float sprintMult = 1.5f;
+    public float crouchMult;
     //stamina value for the user initialized to 10
     public float maxStam = 5f;
     float stamina;
@@ -59,6 +60,8 @@ public class playerMovement : MonoBehaviour
             jumpTime -= Time.deltaTime;
         }
 
+        multiplier = 1f;
+
         //check if shift is being pressed
         if(Input.GetButton("Sprint") && sprintDelay == false)
         {
@@ -75,14 +78,22 @@ public class playerMovement : MonoBehaviour
                 StartCoroutine(DelayFunc());
             }
         } 
-        
+
         else if (stamina <= maxStam)
         {
-            multiplier = 1f;
             stamina += Time.deltaTime;
             //DEBUG
             //Debug.Log("I am not sprint");
         }
+
+        //Crouch
+        if(Input.GetButton("Crouch"))
+        {
+            //References.theCamera.transform.position += new Vector3(0, -10f * Time.deltaTime, 0);
+            multiplier = crouchMult;
+        }
+
+        
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");

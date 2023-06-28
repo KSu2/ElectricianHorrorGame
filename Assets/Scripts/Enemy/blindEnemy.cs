@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class blindEnem : MonoBehaviour
+public class blindEnemy : MonoBehaviour
 {
         //the agent
     public UnityEngine.AI.NavMeshAgent agent;
@@ -15,6 +15,7 @@ public class blindEnem : MonoBehaviour
 
     public float hearingRange;
     public float sprintMult;
+    public float crouchMult;
     public float jumpMod;
     private float hearingRangeMult;
 
@@ -45,18 +46,22 @@ public class blindEnem : MonoBehaviour
             hearingRangeMult = sprintMult;
         }
 
+        //Crouch decreases hearing range
+        if(Input.GetButton("Crouch"))
+        {
+            hearingRangeMult = crouchMult;
+        }
+
         //Jump increases hearing range
         if(Input.GetButtonDown("Jump") && playerMovement.isGrounded)
         {
             hearingRangeMult *= jumpMod;
-            Debug.Log(hearingRangeMult);
-            Debug.Log("In Range" + Vector3.Distance(transform.position, playerPos));
         }
 
         //Detection is based on if player is in the hearing range, moving or jumping, and is grounded
         if(Vector3.Distance(transform.position, playerPos) <= hearingRange * hearingRangeMult && (Input.GetButton("Horizontal") || Input.GetButton("Vertical") || Input.GetButton("Jump")) && playerMovement.isGrounded)
         {
-                playerInSightRange = true;
+            playerInSightRange = true;
         }
 
         //Player leaves detection range

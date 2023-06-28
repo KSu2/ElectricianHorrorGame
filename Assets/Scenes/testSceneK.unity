@@ -1072,6 +1072,7 @@ MonoBehaviour:
   walkPointRange: 0
   hearingRange: 17
   sprintMult: 3
+  crouchMult: 0.5
   jumpMod: 1.2
   chaseSpeed: 5
   patrolSpeed: 3
@@ -3403,6 +3404,10 @@ PrefabInstance:
       propertyPath: up
       value: 
       objectReference: {fileID: 17639120}
+    - target: {fileID: 6790174293875512299, guid: fdb18c1516fadb240ab0798617b83a7d, type: 3}
+      propertyPath: crouchMult
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6790174293875512299, guid: fdb18c1516fadb240ab0798617b83a7d, type: 3}
       propertyPath: jumpHeight
       value: 1.5
