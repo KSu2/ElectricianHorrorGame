@@ -110,18 +110,36 @@ public class playerMovement : MonoBehaviour
         {
             if(controller.height > crouchHeight)
             {
-                controller.height = Mathf.Lerp(controller.height, crouchHeight, crouchSpeed*Time.deltaTime);
+                UpdateControllerHeight(crouchHeight);
             }
             multiplier = crouchMult;
         }
         else
         {
-            float lastHeight = controller.height;
             if(controller.height < baseHeight)
             {
-                controller.height = Mathf.Lerp(controller.height, baseHeight, crouchSpeed*Time.deltaTime);
+                float lastHeight = controller.height;
+
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, transform.up, out hit, baseHeight))
+                {
+                    if (hit.distance < baseHeight - crouchHeight)
+                    {
+                        Debug.Log(hit.distance);
+                        UpdateControllerHeight(crouchHeight + hit.distance);
+                        return;
+                    }
+                    else
+                    {
+                        UpdateControllerHeight(baseHeight);
+                    }
+                }
+                else
+                {
+                    UpdateControllerHeight(baseHeight);
+                }
+                transform.position += new Vector3(0, (controller.height - lastHeight)/2, 0);
             }
-            transform.position += new Vector3(0, (controller.height - lastHeight)/2, 0);
         }
 
         float x = Input.GetAxis("Horizontal");
@@ -159,5 +177,10 @@ public class playerMovement : MonoBehaviour
     {
             yield return new WaitForSeconds(sprintDelayTime);
             sprintDelay = false;
+    }
+
+    void UpdateControllerHeight(float newHeight)
+    {
+        controller.height = Mathf.Lerp(controller.height, newHeight, crouchSpeed*Time.deltaTime);
     }
 }
