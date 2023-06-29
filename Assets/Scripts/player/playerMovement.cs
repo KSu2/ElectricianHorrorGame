@@ -5,14 +5,21 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     public CharacterController controller;
+    private Rigidbody rb;
 
     public float speed = 12f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
     public float doubleJumps = 1;
     public float coyoteTime = 1f;
+
     public float sprintMult = 1.5f;
     public float crouchMult;
+    public float crouchHeight;
+    private float baseHeight;
+    public float crouchSpeed;
+    public float crouchJumpDrain;
+    private bool isCrouching;
     //stamina value for the user initialized to 10
     public float maxStam = 5f;
     float stamina;
@@ -42,6 +49,9 @@ public class playerMovement : MonoBehaviour
     {
         References.thePlayer = gameObject;
         stamina = maxStam;
+        rb = References.thePlayer.GetComponent<Rigidbody>();
+        baseHeight = controller.height;
+        isCrouching = false;
     }
     
     void Update()
@@ -86,14 +96,33 @@ public class playerMovement : MonoBehaviour
             //Debug.Log("I am not sprint");
         }
 
-        //Crouch
+        //Crouching
         if(Input.GetButton("Crouch"))
         {
-            //References.theCamera.transform.position += new Vector3(0, -10f * Time.deltaTime, 0);
-            multiplier = crouchMult;
+            isCrouching = true;
+        }
+        else
+        {
+            isCrouching = false;
         }
 
-        
+        if(isCrouching)
+        {
+            if(controller.height > crouchHeight)
+            {
+                controller.height = Mathf.Lerp(controller.height, crouchHeight, crouchSpeed*Time.deltaTime);
+            }
+            multiplier = crouchMult;
+        }
+        else
+        {
+            float lastHeight = controller.height;
+            if(controller.height < baseHeight)
+            {
+                controller.height = Mathf.Lerp(controller.height, baseHeight, crouchSpeed*Time.deltaTime);
+            }
+            transform.position += new Vector3(0, (controller.height - lastHeight)/2, 0);
+        }
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -104,10 +133,9 @@ public class playerMovement : MonoBehaviour
         //Debug.Log("Current speed: " + speed);
     
         controller.Move(move * speed * multiplier * Time.deltaTime);
-        
 
         //first jump condition
-        if(Input.GetButtonDown("Jump") && (jumpTime > 0f || isGrounded))
+        if(Input.GetButtonDown("Jump") && (jumpTime > 0f || isGrounded) && !isCrouching)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             jumpTime -= jumpTime;
